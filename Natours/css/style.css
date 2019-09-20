@@ -1,0 +1,174 @@
+/* Colors:
+Light green:#7ed56f
+Medium green:#55c57a
+Dark green:#28b485 
+*/
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight:400px;
+    font-size: 16px;
+    color:#777;
+    padding:30px;
+}
+.header{
+    height: 95vh;
+    background-image:  linear-gradient(to right,rgba(126, 213, 111, 0.8),rgba(40, 180, 133, 0.8)),url("../img/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    clip-path: polygon(0% 0%,100% 0%,100% 70vh,0% 100%);
+    position: relative;
+}
+.logo-box{
+    position: absolute;
+    top:40px;
+    left: 40px;
+}
+.logo{
+    height: 35px;
+}
+.text-box{
+    position: absolute;
+    top:40%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+}
+.heading-primary{
+    color:#fff;
+    text-transform: uppercase;
+    /* Removes the default animation glitch */
+    backface-visibility: hidden;
+}
+.heading-primary-main{
+    display: block;
+    /* top: 50%; */
+    font-size: 60px;
+    font-weight:400;
+    letter-spacing: 35px;
+    /* Applying animation */
+    animation-name: moveToRight;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    /* animation-delay: 2s;     */
+    /* animation-iteration-count: 3; */
+}
+.heading-primary-sub{
+    display: block;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 16.4px;
+    animation: moveToLeft 3s ease-out;
+    margin-bottom: 60px;
+    /* animation-name: moveToLeft;
+    animation-duration: 3s;    
+    animation-timing-function: ease-out; */
+}
+/* Making Animation */
+@keyframes moveToRight{
+0%{
+    opacity: 0;
+        transform: translateX(-100px);
+    }
+    80%{
+        transform: translateX(20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes moveToLeft{
+0%{
+    opacity: 0;
+        transform: translateX(100px);
+    }
+    80%{
+        transform: translateX(-20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes moveToUp{
+0%{
+    opacity: 0;
+        transform: translateY(60px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+/* PSEUDO CLASSES */
+.btn:link,
+.btn:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 400px;
+    transition: all .2s ;
+    position: relative;
+}
+.btn:hover{
+    transform: translateY(-3px);
+    
+    /* box-shadow: X Y DEPTH rgba(0, 0, 0, .2); */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+}
+.btn:active{
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
+    transform: translateY(-1px);
+}
+.btn-white{
+    background-color: white;
+    color: #777;
+}
+/* 
+PSEUDO ELEMENTS 
+So the trick here is to add an element that looks
+exactly like the button that we already have,
+But we put it behind the button
+It appears and comes forward when we hover on the button 
+And when we hover out of the button,
+Then this pseudo element goes back behind the button.
+*/
+.btn::after{
+    /* We have to add this otherwise it won't appear */
+    content: "";
+    /* Inline block because the original button is also inline-block */
+    display:inline-block;
+    /* Both this 100% because this is been treated as the child elem for the original elem */
+    height: 100%;
+    width: 100%;
+    border-radius:100px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    transition: all .4s;
+}
+.btn-white:after{
+    background-color: white;
+    color: #777;
+}
+/* to select the hidden btn behind the actual btn on hover state */
+.btn:hover::after{
+    /* Double the size it has before */
+    /* transform: scale(1.5); */
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+.btn-animated{
+    animation: moveToUp 3s .75s;
+    /* It will apply the 0% style in animation before the animation starts */
+    animation-fill-mode: backwards;
+}
