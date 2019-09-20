@@ -5,17 +5,24 @@ Dark green:#28b485
 */
 
 
-*{
+*,
+*::after,
+*::before{
     margin: 0px;
     padding: 0px;
-    box-sizing: border-box;
+    box-sizing: inherit;
+}
+html{
+    /* font-size: 10px; */
+    font-size: 62.5%;
 }
 body{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    font-weight:400px;
-    font-size: 16px;
+    font-weight:40rem;
+    font-size: 1.6rem;
     color:#777;
-    padding:30px;
+    padding:3rem;
+    box-sizing: border-box;
 }
 .header{
     height: 95vh;
@@ -27,11 +34,11 @@ body{
 }
 .logo-box{
     position: absolute;
-    top:40px;
-    left: 40px;
+    top:4rem;
+    left: 4rem;
 }
 .logo{
-    height: 35px;
+    height: 3.5rem;
 }
 .text-box{
     position: absolute;
@@ -49,23 +56,23 @@ body{
 .heading-primary-main{
     display: block;
     /* top: 50%; */
-    font-size: 60px;
-    font-weight:400;
-    letter-spacing: 35px;
+    font-size: 6rem;
+    font-weight:40rem;
+    letter-spacing: 3.5rem;
     /* Applying animation */
     animation-name: moveToRight;
-    animation-duration: 3s;
+    animation-duration: 2s;
     animation-timing-function: ease-out;
     /* animation-delay: 2s;     */
     /* animation-iteration-count: 3; */
 }
 .heading-primary-sub{
     display: block;
-    font-size: 20px;
-    font-weight: 400;
-    letter-spacing: 16.4px;
-    animation: moveToLeft 3s ease-out;
-    margin-bottom: 60px;
+    font-size: 2rem;
+    font-weight: 40rem;
+    letter-spacing: 1.75rem;
+    animation: moveToLeft 2s ease-out;
+    margin-bottom: 6rem;
     /* animation-name: moveToLeft;
     animation-duration: 3s;    
     animation-timing-function: ease-out; */
@@ -74,23 +81,23 @@ body{
 @keyframes moveToRight{
 0%{
     opacity: 0;
-        transform: translateX(-100px);
+        transform: translateX(-10rem);
     }
     80%{
-        transform: translateX(20px);
+        transform: translateX(2rem);
     }
     100%{
         opacity: 1;
-        transform: translateX(0px);
+        transform: translateX(0);
     }
 }
 @keyframes moveToLeft{
 0%{
     opacity: 0;
-        transform: translateX(100px);
+        transform: translateX(10rem);
     }
     80%{
-        transform: translateX(-20px);
+        transform: translateX(-2rem);
     }
     100%{
         opacity: 1;
@@ -100,7 +107,7 @@ body{
 @keyframes moveToUp{
 0%{
     opacity: 0;
-        transform: translateY(60px);
+        transform: translateY(6rem);
     }
     100%{
         opacity: 1;
@@ -112,21 +119,21 @@ body{
 .btn:visited{
     text-transform: uppercase;
     text-decoration: none;
-    padding: 15px 40px;
+    padding: 1.5rem 4rem;
     display: inline-block;
-    border-radius: 400px;
+    border-radius: 40rem;
     transition: all .2s ;
     position: relative;
 }
 .btn:hover{
-    transform: translateY(-3px);
+    transform: translateY(-0.3rem);
     
     /* box-shadow: X Y DEPTH rgba(0, 0, 0, .2); */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, .2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
 }
 .btn:active{
-    box-shadow: 0 5px 20px rgba(0, 0, 0, .2);
-    transform: translateY(-1px);
+    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, .2);
+    transform: translateY(-.1rem);
 }
 .btn-white{
     background-color: white;
@@ -149,7 +156,7 @@ Then this pseudo element goes back behind the button.
     /* Both this 100% because this is been treated as the child elem for the original elem */
     height: 100%;
     width: 100%;
-    border-radius:100px;
+    border-radius:10rem;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -168,7 +175,7 @@ Then this pseudo element goes back behind the button.
     opacity: 0;
 }
 .btn-animated{
-    animation: moveToUp 3s .75s;
+    animation: moveToUp 2s .75s;
     /* It will apply the 0% style in animation before the animation starts */
     animation-fill-mode: backwards;
 }
