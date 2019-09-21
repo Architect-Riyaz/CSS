@@ -32,12 +32,12 @@ body{
     clip-path: polygon(0% 0%,100% 0%,100% 70vh,0% 100%);
     position: relative;
 }
-.logo-box{
+.header__logo-box{
     position: absolute;
     top:4rem;
     left: 4rem;
 }
-.logo{
+.header__logo{
     height: 3.5rem;
 }
 .text-box{
@@ -53,7 +53,7 @@ body{
     /* Removes the default animation glitch */
     backface-visibility: hidden;
 }
-.heading-primary-main{
+.heading-primary--main{
     display: block;
     /* top: 50%; */
     font-size: 6rem;
@@ -66,7 +66,7 @@ body{
     /* animation-delay: 2s;     */
     /* animation-iteration-count: 3; */
 }
-.heading-primary-sub{
+.heading-primary--sub{
     display: block;
     font-size: 2rem;
     font-weight: 40rem;
@@ -105,8 +105,8 @@ body{
     }
 }
 @keyframes moveToUp{
-0%{
-    opacity: 0;
+    0%{
+        opacity: 0;
         transform: translateY(6rem);
     }
     100%{
@@ -135,7 +135,7 @@ body{
     box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, .2);
     transform: translateY(-.1rem);
 }
-.btn-white{
+.btn--white{
     background-color: white;
     color: #777;
 }
@@ -163,7 +163,7 @@ Then this pseudo element goes back behind the button.
     z-index: -1;
     transition: all .4s;
 }
-.btn-white:after{
+.btn--white:after{
     background-color: white;
     color: #777;
 }
@@ -174,7 +174,7 @@ Then this pseudo element goes back behind the button.
     transform: scaleX(1.4) scaleY(1.6);
     opacity: 0;
 }
-.btn-animated{
+.btn--animated{
     animation: moveToUp 2s .75s;
     /* It will apply the 0% style in animation before the animation starts */
     animation-fill-mode: backwards;
