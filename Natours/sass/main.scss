@@ -3,6 +3,7 @@ $color-primary-light:#55c57a;
 $color-primary-dark:#28b485;
 $color-grey-dark:#777;
 $color-white:#fff;
+$color-black:#000;
 *,
 *::after,
 *::before{
@@ -28,51 +29,51 @@ body{
     background-position: center;
     clip-path: polygon(0% 0%,100% 0%,100% 70vh,0% 100%);
     position: relative;
-}
-.header__logo-box{
-    position: absolute;
-    top:4rem;
-    left: 4rem;
-}
-.header__logo{
-    height: 3.5rem;
-}
-.text-box{
-    position: absolute;
-    top:40%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    text-align: center;
+    &__logo-box{
+        position: absolute;
+        top:4rem;
+        left: 4rem;
+    }
+    &__logo{
+        height: 3.5rem;
+    }
+    &__text-box{
+        position: absolute;
+        top:40%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        text-align: center;
+    }
 }
 .heading-primary{
     color:$color-white;
     text-transform: uppercase;
     /* Removes the default animation glitch */
     backface-visibility: hidden;
-}
-.heading-primary--main{
-    display: block;
-    /* top: 50%; */
-    font-size: 6rem;
-    font-weight:40rem;
-    letter-spacing: 3.5rem;
-    /* Applying animation */
-    animation-name: moveToRight;
-    animation-duration: 2s;
-    animation-timing-function: ease-out;
-    /* animation-delay: 2s;     */
-    /* animation-iteration-count: 3; */
-}
-.heading-primary--sub{
-    display: block;
-    font-size: 2rem;
-    font-weight: 40rem;
-    letter-spacing: 1.75rem;
-    animation: moveToLeft 2s ease-out;
-    margin-bottom: 6rem;
-    /* animation-name: moveToLeft;
-    animation-duration: 3s;    
-    animation-timing-function: ease-out; */
+    &--main{
+        display: block;
+        /* top: 50%; */
+        font-size: 6rem;
+        font-weight:40rem;
+        letter-spacing: 3.5rem;
+        /* Applying animation */
+        animation-name: moveToRight;
+        animation-duration: 2s;
+        animation-timing-function: ease-out;
+        /* animation-delay: 2s;     */
+        /* animation-iteration-count: 3; */
+    }
+    &--sub{
+        display: block;
+        font-size: 2rem;
+        font-weight: 40rem;
+        letter-spacing: 1.75rem;
+        animation: moveToLeft 2s ease-out;
+        margin-bottom: 6rem;
+        /* animation-name: moveToLeft;
+        animation-duration: 3s;    
+        animation-timing-function: ease-out; */
+    }
 }
 /* Making Animation */
 @keyframes moveToRight{
@@ -111,68 +112,75 @@ body{
         transform: translateY(0px);
     }
 }
-/* PSEUDO CLASSES */
-.btn:link,
-.btn:visited{
-    text-transform: uppercase;
-    text-decoration: none;
-    padding: 1.5rem 4rem;
-    display: inline-block;
-    border-radius: 40rem;
-    transition: all .2s ;
-    position: relative;
-}
-.btn:hover{
-    transform: translateY(-0.3rem);
-    
-    /* box-shadow: X Y DEPTH rgba(0, 0, 0, .2); */
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .2);
-}
-.btn:active{
-    box-shadow: 0 0.5rem 2rem rgba(0, 0, 0, .2);
-    transform: translateY(-.1rem);
-}
-.btn--white{
-    background-color: $color-white;
-    color: $color-grey-dark;
-}
-/* 
-PSEUDO ELEMENTS 
-So the trick here is to add an element that looks
-exactly like the button that we already have,
-But we put it behind the button
-It appears and comes forward when we hover on the button 
-And when we hover out of the button,
-Then this pseudo element goes back behind the button.
-*/
-.btn::after{
-    /* We have to add this otherwise it won't appear */
-    content: "";
-    /* Inline block because the original button is also inline-block */
-    display:inline-block;
-    /* Both this 100% because this is been treated as the child elem for the original elem */
-    height: 100%;
-    width: 100%;
-    border-radius:10rem;
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    z-index: -1;
-    transition: all .4s;
-}
-.btn--white:after{
-    background-color: $color-white;
-    color: $color-grey-dark;
-}
-/* to select the hidden btn behind the actual btn on hover state */
-.btn:hover::after{
-    /* Double the size it has before */
-    /* transform: scale(1.5); */
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
-}
-.btn--animated{
-    animation: moveToUp 2s .75s;
-    /* It will apply the 0% style in animation before the animation starts */
-    animation-fill-mode: backwards;
+
+.btn{
+
+  /* PSEUDO CLASSES */
+  &:link,
+  &:visited{
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 1.5rem 4rem;
+      display: inline-block;
+      border-radius: 40rem;
+      transition: all .2s ;
+      position: relative;
+  }
+  &:hover{
+      transform: translateY(-0.3rem);
+      
+      /* box-shadow: X Y DEPTH rgba($color-black, .2); */
+      box-shadow: 0 1rem 2rem rgba($color-black, .2);
+
+        /* to select the hidden btn behind the actual btn on hover state */
+      &::after{
+        /* Double the size it has before */
+        /* transform: scale(1.5); */
+        transform: scaleX(1.4) scaleY(1.6);
+        opacity: 0;
+    }
+  }
+  &:active{
+      box-shadow: 0 0.5rem 2rem rgba($color-black, .2);
+      transform: translateY(-.1rem);
+  }
+  &--white{
+      background-color: $color-white;
+      color: $color-grey-dark;
+
+      &:after{
+        background-color: $color-white;
+        color: $color-grey-dark;
+      }
+  }
+  /* 
+  PSEUDO ELEMENTS 
+  So the trick here is to add an element that looks
+  exactly like the button that we already have,
+  But we put it behind the button
+  It appears and comes forward when we hover on the button 
+  And when we hover out of the button,
+  Then this pseudo element goes back behind the button.
+  */
+  &::after{
+      /* We have to add this otherwise it won't appear */
+      content: "";
+      /* Inline block because the original button is also inline-block */
+      display:inline-block;
+      /* Both this 100% because this is been treated as the child elem for the original elem */
+      height: 100%;
+      width: 100%;
+      border-radius:10rem;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      z-index: -1;
+      transition: all .4s;
+  }
+
+  &--animated{
+      animation: moveToUp 2s .75s;
+      /* It will apply the 0% style in animation before the animation starts */
+      animation-fill-mode: backwards;
+  }
 }
