@@ -12,13 +12,12 @@
 
     background-image: linear-gradient(to right,$color-primary,$color-primary-dark);
     -webkit-background-clip: text;
+    background-clip: text;
     color:transparent;
   }
-  &__text{}
-
   &:hover{
     transform: translateY(-1.5rem) scale(1.025);
     box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
   }
-  
+
 }

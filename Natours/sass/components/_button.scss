@@ -37,6 +37,15 @@
       color: $color-grey-dark;
     }
   }
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &:after {
+      background-color: $color-primary;
+      color: $color-grey-dark;
+    }
+  }
   /* 
   PSEUDO ELEMENTS 
   So the trick here is to add an element that looks
