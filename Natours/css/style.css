@@ -112,6 +112,20 @@ body {
 .mt-10 {
   margin-top: 1.5rem; }
 
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: .2;
+  overflow: hidden; }
+  .bg-video__contain {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; }
+
 .btn {
   /* PSEUDO CLASSES */
   /* 
@@ -334,6 +348,51 @@ body {
     transform: translateY(-1.5rem) scale(1.025);
     box-shadow: 0 2.5rem 4rem rgba(0, 0, 0, 0.5); }
 
+.story {
+  width: 75%;
+  height: 25rem;
+  margin: 0 auto;
+  box-shadow: 0 3rem 6rem rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  border-radius: 3px;
+  padding: 6rem;
+  font-size: 1.6rem;
+  transform: skewX(-12deg); }
+  .story__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    shape-outside: circle(50% at 50% 50%);
+    -webkit-clip-path: circle(50% at 50% 50%);
+    clip-path: circle(50% at 50% 50%);
+    transform: translate(-3rem) skewX(12deg);
+    position: relative; }
+  .story__image {
+    width: 100%;
+    transform: scale(1.4);
+    transition: all .2s ease;
+    backface-visibility: hidden; }
+  .story__text {
+    transform: skewX(12deg); }
+  .story__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 20%);
+    color: #fff;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    transition: all .3s ease;
+    backface-visibility: hidden; }
+  .story:hover .story__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%); }
+  .story:hover .story__image {
+    transform: scale(1);
+    filter: blur(3px) brightness(80%); }
+
 .header {
   height: 95vh;
   background-image: linear-gradient(to right, rgba(27, 255, 57, 0.8), rgba(64, 255, 89, 0.8)), url("../img/bg.jpg");
@@ -397,5 +456,10 @@ body {
 
 .section-tours {
   background-color: #f7f7f7;
-  padding: 25rem 0;
+  padding: 20rem 0 10rem 0;
   margin-top: -25vh; }
+
+.section-stories {
+  width: 100%;
+  position: relative;
+  padding: 20rem 0 10rem 0; }
