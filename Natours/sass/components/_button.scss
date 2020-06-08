@@ -1,0 +1,101 @@
+.btn {
+  /* PSEUDO CLASSES */
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 40rem;
+    transition: all 0.2s;
+    position: relative;
+  }
+  &:hover {
+    transform: translateY(-0.3rem);
+
+    /* box-shadow: X Y DEPTH rgba($color-black, .2); */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    /* to select the hidden btn behind the actual btn on hover state */
+    &::after {
+      /* Double the size it has before */
+      /* transform: scale(1.5); */
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+  &:active {
+    box-shadow: 0 0.5rem 2rem rgba($color-black, 0.2);
+    transform: translateY(-0.1rem);
+  }
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark;
+
+    &:after {
+      background-color: $color-white;
+      color: $color-grey-dark;
+    }
+  }
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &:after {
+      background-color: $color-primary;
+      color: $color-grey-dark;
+    }
+  }
+  /* 
+  PSEUDO ELEMENTS 
+  So the trick here is to add an element that looks
+  exactly like the button that we already have,
+  But we put it behind the button
+  It appears and comes forward when we hover on the button 
+  And when we hover out of the button,
+  Then this pseudo element goes back behind the button.
+  */
+  &::after {
+    /* We have to add this otherwise it won't appear */
+    content: "";
+    /* Inline block because the original button is also inline-block */
+    display: inline-block;
+    /* Both this 100% because this is been treated as the child elem for the original elem */
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  &--animated {
+    animation: moveToUp 2s 0.75s;
+    /* It will apply the 0% style in animation before the animation starts */
+    animation-fill-mode: backwards;
+  }
+}
+.btn-text{
+  &:link,
+  &:visited{
+    font-size: 1.5rem;
+    color:$color-primary;
+    display: inline-block;
+    text-decoration:none;
+    border-bottom: 1px solid $color-primary;
+    padding:5px 10px;
+    transition:all .2s;
+  }
+  &:hover{
+    background-color: $color-primary;
+    color:$color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black,.15);
+    transform: translateY(-2px);
+  }
+  &:active{
+    box-shadow: 0 .5rem 1rem rgba($color-black,.15);
+    transform: translateY(-2px);
+  }
+}
